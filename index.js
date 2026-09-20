@@ -34,8 +34,7 @@ function allEventListener(){
     if(!name) return;
     stats.innerHTML = "Exploring...";
     try{
-      const BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"? "http://localhost:3000": "";
-      const response = await fetch(`${BASE_URL}/api/dev/username?name=${name}`);
+      const response = await fetch(`/api/dev/username?name=${name}`);
       const data =  await response.json();
       if(data.error){
         stats.innerHTML = data.error;
