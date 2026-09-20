@@ -1,9 +1,14 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
 import express from 'express';
 import cors from 'cors';
 const app = express();
 app.use(cors());
 app.use(express.json());
 const cache = {};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.get('/api/dev/username', async (req, res) => {
   const queryName = req.query.name || req.query.username;
   if (!queryName) {
@@ -35,8 +40,13 @@ app.get('/api/dev/username', async (req, res) => {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
 }
 export default app;
