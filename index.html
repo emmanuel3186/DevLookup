@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevLookup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet">
+  <link rel="stylesheet" href="hero-section.css">
+  <link rel="stylesheet" href="profile-card.css">
+</head>
+<body>
+  <section class="hero">
+  <nav class="navbar">
+    <div class="nav-brand">
+      <img src="assets/github.svg" class="github-logo" alt="Github">
+      <a href="/" class="logo">DevLookup</a>
+    </div>
+    <div class="nav-style">
+      <span class="nav-label">Github Explorer</span>
+    </div>
+  </nav>
+  <div class="hero-content">
+    <span class="eyebrow">
+      YOUR GITHUB PROFILE, AT A GLANCE
+    </span>
+    <h1>
+      Discover any developer on GitHub.
+    </h1>
+    <p class="hero-description">
+      Explore GitHub profiles, repositories,
+      and developer activity — all in one place.
+    </p>
+    <form class="search-form" id="search-form">
+      <input id="search-bar"
+        type="text"
+        placeholder="Enter a GitHub username..."
+      />
+      <button type="submit" id="search-button">
+        Explore →
+      </button>
+    </form>
+    <span class="helper-text">
+      Try a username like octocat
+    </span>
+  </div>
+</section>
+  <div id="stats"></div>
+  <footer class="app-footer">
+   <div class="footer-content">
+    <p>© 2026 DevLookup. Powered by GitHub API.</p>
+    <p class="footer-links">
+      Built with HTML, CSS & JS
+    </p>
+   </div>
+  </footer>
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
