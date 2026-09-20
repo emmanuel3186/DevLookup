@@ -1,5 +1,5 @@
 import express from 'express';
-import cors from "cors";
+import cors from 'cors';
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -9,10 +9,10 @@ app.get('/api/dev/username', async (req, res) => {
   if (!queryName) {
     return res.status(400).json({ error: 'Name is required' });
   }
-  const base = `https://api.github.com/users/${queryName}`;
   if (cache[queryName]) {
     return res.json(cache[queryName]);
   }
+  const base = `https://api.github.com/users/${queryName}`;
   try {
     const headers = { 'User-Agent': 'dev-lookup-five' };
     const [response, reposRes] = await Promise.all([
