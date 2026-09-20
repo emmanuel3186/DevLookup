@@ -5,7 +5,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const cache = {};
-const publicPath = path.join(process.cwd(), 'public');
+const rootPath = process.cwd();
+const publicPath = path.join(rootPath, 'public');
 app.use(express.static(publicPath));
 app.get('/api/dev/username', async (req, res) => {
   const queryName = req.query.name || req.query.username;
@@ -39,7 +40,7 @@ app.get('/api/dev/username', async (req, res) => {
   }
 });
 app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
+  res.sendFile(path.join(rootPath, 'index.html'));
 });
 if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 3000;
