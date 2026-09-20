@@ -1,27 +1,17 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "public/**/*",
-      "use": "@vercel/static"
+      "source": "/(hero-section.css|profile-card.css)",
+      "destination": "/public/$1"
     },
     {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*\\.css)",
-      "dest": "/public/$1"
+      "source": "/assets/:path*",
+      "destination": "/public/assets/:path*"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/public/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
+      "source": "/((?!public/).*)",
+      "destination": "/server.js"
     }
   ]
 }

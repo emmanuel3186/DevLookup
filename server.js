@@ -1,14 +1,12 @@
 import path from 'path';
-import { fileURLToPath } from 'url';
 import express from 'express';
 import cors from 'cors';
 const app = express();
 app.use(cors());
 app.use(express.json());
 const cache = {};
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
+const publicPath = path.join(process.cwd(), 'public');
+app.use(express.static(publicPath));
 app.get('/api/dev/username', async (req, res) => {
   const queryName = req.query.name || req.query.username;
   if (!queryName) {
@@ -41,7 +39,7 @@ app.get('/api/dev/username', async (req, res) => {
   }
 });
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(publicPath, 'index.html'));
 });
 if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 3000;
