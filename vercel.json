@@ -20,6 +20,10 @@
       "dest": "/public/assets/$1"
     },
     {
+      "src": "/index.js",
+      "dest": "/index.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "server.js"
     }
